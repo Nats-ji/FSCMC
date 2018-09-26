@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SCMC Webapp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id = "login">
+        <div id = "nickname-input">
+          <p>Please enter your name, then press Ready.</p>
+          <input id = "firstname" tpye = "text" placeholder="First Name" />
+          <input id = "lastname" tpye = "text" placeholder="Last Name" />
+          <button id = "ready">Ready</button>
+          <p id = "error">Please enter both your first name and last name.</p>
+        </div>
+        <div id = "ready-wait">
+          <p>You are ready now.</p>
+          <p>Please wait for other users to press ready.</p>
+        </div>
+        <div id = 'connections'>
+          <p id = 'connectionCount'></p>
+          <p id = 'readyCount'></p>
+        </div>
+        <div id = 'start-countdown'></div>
+    </div>
+    <div id = "container">
+      <div id = "chat-window">
+        <div id = "chatlog-container">
+          <div id = "chatlog">
+          </div>
+        </div>
+        <div id = "input">
+          <input id = "msg" type = "textarea" placeholder="Enter your message here."></input>
+          <button id = "send">Send</button>
+        </div>
+      </div>
+      <div id = "task-window">
+        <div id = "task-pic">
+          <img id = "task-img" src="/image/task_1.png">
+        </div>
+      </div>
+    </div>
+    <script src = "/chat.js"></script>
+  </body>
+</html>

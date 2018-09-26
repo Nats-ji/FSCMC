@@ -1,0 +1,266 @@
+div#chat-window {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+div#task-window {
+    float: right;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+div#container {
+    display:none;
+    height: 100%;
+    width: 100%;
+}
+
+div#nickname-input {
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -200px;
+    position: relative;
+    height: 60px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+div#ready-wait {
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -200px;
+    position: relative;
+    height: 60px;
+    width: 400px;
+    box-sizing: border-box;
+    display: none;
+}
+
+div#connections {
+    left: 50%;
+    margin-left: -200px;
+    position: relative;
+    width: 400px;
+    box-sizing: border-box;
+    height: 60px;
+    top: 50%;
+    margin-top: 0px;
+}
+
+div#start-countdown {
+    left: 50%;
+    margin-left: -225px;
+    position: relative;
+    width: 450px;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+    top:50%;
+    margin-top: -15px;
+}
+
+div#task-pic {
+    height: auto;
+    margin: 10px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+img#task-img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Verdana,sans-serif;
+}
+
+div#chatlog-container {
+    height: 90%;
+}
+
+div#input {
+    height: 10%;
+    position: relative;
+}
+
+div#chatlog {
+    overflow: scroll;
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+input#msg {
+    width: calc(100% - 80px);
+    height: 25px;
+    min-height: 27px !important;
+    scroll-behavior: auto;
+    resize: none;
+    font-size: 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    box-sizing: border-box;
+}
+
+
+button#send {
+    height: 27px;
+    width: 50px;
+    top: auto;
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    box-sizing: border-box;
+}
+
+.receiver {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.receiver .avatar {
+    display: table-cell;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: #d77373;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.receiver .msg {
+    display: table;
+    width: auto;
+    max-width: 50%;
+    min-height: 21px;
+    position: relative;
+    left: 60px;
+    top: -15px;
+    background: #e2e2e2;
+    color: black;
+    padding: 10px 13px 10px;
+    border-radius: 0px 10px 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 17px;
+}
+
+.receiver .msg:after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 11px solid;
+    border-color: #e2e2e2 transparent transparent;
+    top: 0;
+    left: -7.5px;
+}
+
+.receiver .name {
+    position: absolute;
+    left: 70px;
+    top: 5px;
+    width: 50%;
+}
+
+
+.sender {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.sender .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: #255a90;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 40px;
+    margin-left: auto;
+    color: white;
+    font-weight: bold;
+}
+
+.sender .msg {
+    display: table;
+    width: auto;
+    min-height: 21px;
+    max-width: 50%;
+    position: relative;
+    top: -15px;
+    right: 60px;
+    background: #4285f4;
+    color: white;
+    padding: 10px 13px 10px;
+    border-radius: 10px 10px 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 17px;
+    margin-left: auto;
+}
+
+.sender .msg:after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 11px solid;
+    border-color: #4285f4 transparent transparent;
+    top: 0;
+    right: -7.5px;
+}
+
+.sender .name {
+    position: absolute;
+    right: 70px;
+    top: 5px;
+    width: 50%;
+    text-align: right;
+}
+
+
+
+.timestamp {
+    display: none;
+}
+
+div#login {
+    height: 100%;
+}
+
+p#error {
+    display: none;
+    color: red;
+    font-size: 13px;
+}
+
+input#firstname {
+    width: 120px;
+}
+
+input#lastname {
+    width: 120px;
+}
