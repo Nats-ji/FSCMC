@@ -37,11 +37,14 @@ $('#msg').bind('input propertychange', function() {
   }, s_status);
   s_status = 1;
 });
+//Send session information.
+
+
 
 //Receive realtime message.
-socket.on('s_output', function(data, status){
+socket.on('s_output', function(data){
   var initials = data.firstname.charAt(0).toUpperCase() + data.lastname.charAt(0).toUpperCase();
-  if (status == 0) {
+  if (data.status == 0) {
     if (data.firstname + data.lastname == firstname.value + lastname.value) {
       chatlogdiv.innerHTML += '<div class = "sender" id = "s_sender"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div></div>';
     } else {

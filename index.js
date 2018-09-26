@@ -13,13 +13,21 @@ app.use(express.static('public'));
 var io = socket(server);
 var connectionCounter = 0;
 var client_status = [];
-
+var session_no;
 //Connect to mongodb.
 mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
   if (err) {
     throw err;
   };
   console.log('MongoDB connected.');
+
+  var db = client.db('SCMC')
+  var session_info = db.collection('session_info');
+  var chatlog = db.collection('chatlog');
+  var typelog = db.collection('typelog');
+
+
+
   io.on('connection',function(socket){
     connectionCounter ++;
     client_status.push([socket.id, 0]);
@@ -60,8 +68,20 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
       io.sockets.emit('ready_check', readyCounter);
       if (readyCounter == connectionCounter && connectionCounter > 1) {//BUg here
         io.sockets.emit('app_start', 1);
-  //      sessionid = parseInt(Math.random() * 100000000000 + 1);
-  //      console.log("Everyone is ready! Session ID is " + sessionid);
+/*        session_info.count(function (err, count) {
+            console.log("session_no is " + count);
+            //Insert session information into MongoDB
+            let sessionid = count + 1;
+            socket.on('session_info', function(socketid, firstname, lastname) {
+              var socketids = [];
+              var firstnames = [];
+              var lastnames = [];
+              socketids.push(socketid); firstnames.push(firstname); lastnames.push(lastname);
+              session_info.insert({sessionid: sessionid, socketids: socketids, firstnames: firstnames, lastnames: lastnames});
+            })
+        })*/
+
+        //console.log("Everyone is ready! Session ID is " + sessionid);
       }
       else {
         io.sockets.emit('app_start', 0);
@@ -73,8 +93,7 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
       if (status == 2) {
 
         //Begin Chat session
-        var db = client.db('SCMC')
-        var chatlog = db.collection('chatlog');
+
 
         //Load Chatlogs for mongodb (bug)
 /*        chatlog.find().limit(100).sort({_id:1}).toArray(function(err, res) {
@@ -107,7 +126,12 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
           let s_lastname = data.lastname;
           let s_message = data.message;
           let s_status = status;
-          io.sockets.emit('s_output', {firstname: s_firstname, lastname: s_lastname, message: s_message}, s_status);
+          let s_time = data.time;
+          typelog.insert({socketid: socket.id, firstname: s_firstname, lastname: s_lastname,message: s_message, time: s_time, status: s_status}, function() {
+            io.sockets.emit('s_output', {socketid: socket.id, firstname: s_firstname, lastname: s_lastname,message: s_message, time: s_time, status: s_status});
+          });
+
+      //    io.sockets.emit('s_output', {firstname: s_firstname, lastname: s_lastname, message: s_message}, s_status);
         });
       }
     })
