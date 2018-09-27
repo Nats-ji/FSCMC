@@ -1,4 +1,5 @@
 var socket = io.connect("http://localhost");
+//var socket = io.connect("http://178.128.88.108:80"); //For Server
 
 var message = document.getElementById('msg');
 var firstname = document.getElementById('firstname');
@@ -42,14 +43,27 @@ $('#msg').bind('input propertychange', function() {
   console.log("s_status: " + s_status);
   console.log("Message: " + this.value +" Time: " + Date.now());
   var s_msg = this.value;
-  socket.emit('s_input', {
-    firstname: firstname.value,
-    lastname: lastname.value,
-    message: s_msg,
-    time: Date.now(),
-    no: s_no
-  }, s_status);
-  s_status = 1;
+  if (s_msg != "") {
+    socket.emit('s_input', {
+      firstname: firstname.value,
+      lastname: lastname.value,
+      message: s_msg,
+      time: Date.now(),
+      no: s_no
+    }, s_status);
+    s_status = 1;
+  } else {
+    s_status = 0;
+    socket.emit('s_input', {
+      firstname: firstname.value,
+      lastname: lastname.value,
+      message: s_msg,
+      time: Date.now(),
+      no: s_no
+    }, s_status);
+
+  }
+
 });
 
 
@@ -58,9 +72,13 @@ socket.on('s_output', function(data){
   var initials = data.firstname.charAt(0).toUpperCase() + data.lastname.charAt(0).toUpperCase();
   if (data.status == 0) {
     if (data.firstname + data.lastname != firstname.value + lastname.value) {
+      if (data.message =="") {
+        $('#s_receiver').remove();
+      } else {
+        chatlogdiv.innerHTML += '<div class = "receiver typing" id = "s_receiver"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
+      }
 /*      chatlogdiv.innerHTML += '<div class = "sender" id = "s_sender"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div></div>';
     } else {*/
-      chatlogdiv.innerHTML += '<div class = "receiver typing" id = "s_receiver"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
     }
   } else {
     if (data.firstname + data.lastname != firstname.value + lastname.value) {
@@ -99,7 +117,6 @@ socket.on('output', function(data){
       var initials = data[x].firstname.charAt(0).toUpperCase() + data[x].lastname.charAt(0).toUpperCase();
 //      console.log(socket.id, data[x].socketid);
       if (data[x].firstname + data[x].lastname == firstname.value + lastname.value) {
-        $('#s_sender').remove();
         chatlogdiv.innerHTML += '<div class = "sender"><div class = "avatar">' + initials + '</div><div class = "name">' + data[x].firstname + ' ' + data[x].lastname + '</div><div class = "msg">' + data[x].message + '</div><div class = "timestamp">%timeplace holder%</div>';
       } else {
         $('#s_receiver').remove();

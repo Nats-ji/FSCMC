@@ -1,4 +1,5 @@
 var socket = io.connect("http://localhost");
+//var socket = io.connect("http://178.128.88.108:80"); //For Server
 var chatlogdiv1 = document.getElementById('chatlog1');
 var chatlogdiv2 = document.getElementById('chatlog2');
 var message1 = document.getElementById('msg1');
@@ -28,22 +29,28 @@ socket.on('spec_output',function(data) {
 socket.on('spec_s_output',function(data) {
   if (data.socketid == data.user1_id) {
     var initials = data.firstname.charAt(0).toUpperCase() + data.lastname.charAt(0).toUpperCase();
+    message1.value = data.message;
     if (data.status == 0) {
-      message1.value = data.message;
-      chatlogdiv2.innerHTML += '<div class = "receiver typing" id = "s_receiver2"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
-      chatlogdiv2.scrollTop = chatlogdiv2.scrollHeight;
+      if (data.message !="") {
+        chatlogdiv2.innerHTML += '<div class = "receiver typing" id = "s_receiver2"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
+        chatlogdiv2.scrollTop = chatlogdiv2.scrollHeight;
+      } else {
+        $('#s_receiver2').remove();
+      }
     } else {
-      message1.value = data.message;
       document.getElementById('s_receiver2').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div>';
     }
   } else {
     var initials = data.firstname.charAt(0).toUpperCase() + data.lastname.charAt(0).toUpperCase();
+    message2.value = data.message;
     if (data.status == 0) {
-      message2.value = data.message;
-      chatlogdiv1.innerHTML += '<div class = "receiver typing" id = "s_receiver1"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
-      chatlogdiv1.scrollTop = chatlogdiv1.scrollHeight;
+      if (data.message != "") {
+        chatlogdiv1.innerHTML += '<div class = "receiver typing" id = "s_receiver1"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
+        chatlogdiv1.scrollTop = chatlogdiv1.scrollHeight;
+      } else {
+        $('#s_receiver1').remove();
+      }
     } else {
-      message2.value = data.message;
       document.getElementById('s_receiver1').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div>';
     }
   }
