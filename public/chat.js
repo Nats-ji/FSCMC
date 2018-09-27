@@ -1,26 +1,39 @@
 var socket = io.connect("http://localhost");
 
 var message = document.getElementById('msg');
-    firstname = document.getElementById('firstname');
-    lastname = document.getElementById('lastname');
-    btn_send = document.getElementById('send');
-    btn_ready = document.getElementById('ready');
-    chatlogdiv = document.getElementById('chatlog');
-    s_status = 0;
+var firstname = document.getElementById('firstname');
+var lastname = document.getElementById('lastname');
+var btn_send = document.getElementById('send');
+var btn_ready = document.getElementById('ready');
+var chatlogdiv = document.getElementById('chatlog');
+var s_status = 0;
+var s_no = 0;
+var chatlog_no = 0;
+
+socket.emit('client_type', 'user');
 
 //Send Message
 btn_send.addEventListener('click', function(){
   if (message.value.trim() != '') {
+    chatlog_no++;
     socket.emit('input', {
       firstname: firstname.value,
       lastname: lastname.value,
       message: message.value,
-      time: Date.now()
+      time: Date.now(),
+      no: chatlog_no
     });
     s_status = 0;
+    s_no++;
     message.value = '';
-    document.getElementById('msg').style.height = "27px"
+    message.style.height = "27px"
   }
+});
+
+$('#msg').keyup(function(event) {
+    if (event.keyCode === 13) {
+        $('#send').click();
+    }
 });
 
 //Send realtime message
@@ -33,28 +46,27 @@ $('#msg').bind('input propertychange', function() {
     firstname: firstname.value,
     lastname: lastname.value,
     message: s_msg,
-    time: Date.now()
+    time: Date.now(),
+    no: s_no
   }, s_status);
   s_status = 1;
 });
-//Send session information.
-
 
 
 //Receive realtime message.
 socket.on('s_output', function(data){
   var initials = data.firstname.charAt(0).toUpperCase() + data.lastname.charAt(0).toUpperCase();
   if (data.status == 0) {
-    if (data.firstname + data.lastname == firstname.value + lastname.value) {
-      chatlogdiv.innerHTML += '<div class = "sender" id = "s_sender"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div></div>';
-    } else {
-      chatlogdiv.innerHTML += '<div class = "receiver" id = "s_receiver"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div></div>';
+    if (data.firstname + data.lastname != firstname.value + lastname.value) {
+/*      chatlogdiv.innerHTML += '<div class = "sender" id = "s_sender"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div></div>';
+    } else {*/
+      chatlogdiv.innerHTML += '<div class = "receiver typing" id = "s_receiver"><div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div></div>';
     }
   } else {
-    if (data.firstname + data.lastname == firstname.value + lastname.value) {
-      document.getElementById('s_sender').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div>';
-    } else {
-      document.getElementById('s_receiver').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div>';
+    if (data.firstname + data.lastname != firstname.value + lastname.value) {
+/*      document.getElementById('s_sender').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + '</div><div class = "msg">' + data.message + '</div>';
+    } else {*/
+      document.getElementById('s_receiver').innerHTML = '<div class = "avatar">' + initials + '</div><div class = "name">' + data.firstname + ' ' + data.lastname + ' (Typing...)</div><div class = "msg">' + data.message + '</div>';
     }
   }
   chatlogdiv.scrollTop = chatlogdiv.scrollHeight;
@@ -72,6 +84,13 @@ btn_ready.addEventListener('click', function(){
     socket.emit('ready_check');
   }
 });
+
+$('#lastname').keyup(function(event) {
+    if (event.keyCode === 13) {
+        $('#ready').click();
+    }
+});
+
 //Receive and send messages.
 socket.on('output', function(data){
 //  console.log(data);
@@ -132,11 +151,11 @@ socket.on('app_start', function(start) {
   }
 })
 
-//Input area resizing.
+/*//Input area resizing.
 $('#msg').each(function () {
   this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
 }).on('input', function () {
   this.style.height = '25px';
   this.style.height = (this.scrollHeight) + 'px';
-});
+});*/
 //--------------------------------------------------------------------

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SCMC Webapp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+  </head>
+  <body>
+    <div id = "container">
+      <div id = "chat-window1">
+        <div id = "chatlog-container1">
+          <div id = "chatlog1">
+          </div>
+        </div>
+        <div id = "input1">
+          <input id = "msg1" type = "textarea" placeholder="Enter your message here." readonly="readonly"></input>
+          <button id = "send1">Send</button>
+        </div>
+      </div>
+      <div id = "chat-window2">
+        <div id = "chatlog-container2">
+          <div id = "chatlog2">
+          </div>
+        </div>
+        <div id = "input2">
+          <input id = "msg2" type = "textarea" placeholder="Enter your message here."  readonly="readonly"></input>
+          <button id = "send2">Send</button>
+        </div>
+      </div>
+    </div>
+    <script src = "/spec.js"></script>
+  </body>
+</html>

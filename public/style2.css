@@ -1,84 +1,18 @@
-div#chat-window {
+div#chat-window1 {
     float: left;
-    width: 100%;
+    width: 50%;
     height: 100%;
 }
 
-div#task-window {
+div#chat-window2 {
     float: right;
     width: 50%;
     height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    display: none;
 }
 
 div#container {
-    display:none;
     height: 100%;
     width: 100%;
-}
-
-div#nickname-input {
-    top: 50%;
-    left: 50%;
-    margin-top: -30px;
-    margin-left: -200px;
-    position: relative;
-    height: 60px;
-    width: 400px;
-    box-sizing: border-box;
-}
-
-div#ready-wait {
-    top: 50%;
-    left: 50%;
-    margin-top: -30px;
-    margin-left: -200px;
-    position: relative;
-    height: 60px;
-    width: 400px;
-    box-sizing: border-box;
-    display: none;
-}
-
-div#connections {
-    left: 50%;
-    margin-left: -200px;
-    position: relative;
-    width: 400px;
-    box-sizing: border-box;
-    height: 60px;
-    top: 50%;
-    margin-top: 0px;
-}
-
-div#start-countdown {
-    left: 50%;
-    margin-left: -225px;
-    position: relative;
-    width: 450px;
-    text-align: center;
-    vertical-align: middle;
-    height: 30px;
-    top:50%;
-    margin-top: -15px;
-}
-
-div#task-pic {
-    height: auto;
-    margin: 10px;
-    box-sizing: border-box;
-    flex: 1;
-}
-
-img#task-img {
-    max-width: 100%;
-    max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
 }
 
 
@@ -92,45 +26,31 @@ body {
     font-family: Verdana,sans-serif;
 }
 
-div#chatlog-container {
+div#chatlog-container1 {
     height: 90%;
 }
 
-div#input {
-    height: 10%;
-    position: relative;
+div#chatlog-container2 {
+    height: 90%;
 }
 
-div#chatlog {
+
+div#chatlog1 {
     overflow: scroll;
     height: 100%;
     padding: 5px;
     box-sizing: border-box;
+    border-right: black 1px solid;
 }
 
-input#msg {
-    width: calc(100% - 80px);
-    height: 25px;
-    min-height: 27px !important;
-    scroll-behavior: auto;
-    resize: none;
-    font-size: 20px;
-    position: absolute;
-    bottom: 40px;
-    left: 10px;
+div#chatlog2 {
+    overflow: scroll;
+    height: 100%;
+    padding: 5px;
     box-sizing: border-box;
+    border-left: black 1px solid;
 }
 
-
-button#send {
-    height: 27px;
-    width: 50px;
-    top: auto;
-    position: absolute;
-    bottom: 40px;
-    right: 10px;
-    box-sizing: border-box;
-}
 
 .receiver {
     box-sizing: border-box;
@@ -256,20 +176,59 @@ button#send {
     display: none;
 }
 
-div#login {
-    height: 100%;
+div#input1 {
+    height: 10%;
+    position: relative;
 }
 
-p#error {
-    display: none;
-    color: red;
-    font-size: 13px;
+div#input2 {
+    height: 10%;
+    position: relative;
 }
 
-input#firstname {
-    width: 120px;
+input#msg1 {
+    width: calc(100% - 80px);
+    height: 25px;
+    min-height: 27px !important;
+    scroll-behavior: auto;
+    resize: none;
+    font-size: 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    box-sizing: border-box;
 }
 
-input#lastname {
-    width: 120px;
+input#msg2 {
+    width: calc(100% - 80px);
+    height: 25px;
+    min-height: 27px !important;
+    scroll-behavior: auto;
+    resize: none;
+    font-size: 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    box-sizing: border-box;
+}
+
+
+button#send1 {
+    height: 27px;
+    width: 50px;
+    top: auto;
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    box-sizing: border-box;
+}
+
+button#send2 {
+    height: 27px;
+    width: 50px;
+    top: auto;
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    box-sizing: border-box;
 }
