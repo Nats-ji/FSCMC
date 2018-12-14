@@ -123,11 +123,11 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
 
           //Receive Message
           socket.on('input', function(data){
-            console.log("New message from ", socket.id, '. Message: ', data.firstname, data.lastname, ': ', data.message, ' Timestamp: ', data.time);
+            console.log("New message from ", socket.id, '. Message: ', data.firstname, data.lastname, ': ', data.message, ' Timestamp: ', Date.now());
             let firstname = data.firstname;
             let lastname = data.lastname;
             let message = data.message;
-            let time = data.time;
+            let time = Date.now();
             let sender_order = data.no;
             overall_order++;
 
@@ -146,7 +146,7 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
             let s_lastname = data.lastname;
             let s_message = data.message;
             let s_status = status;
-            let s_time = data.time;
+            let s_time = Date.now();
             let s_no = data.no;
             typelog.insert({socketid: socket.id, firstname: s_firstname, lastname: s_lastname,message: s_message, time: s_time, status: s_status, overall_order: s_order, sender_order: s_no}, function() {
               io.sockets.emit('s_output', {socketid: socket.id, firstname: s_firstname, lastname: s_lastname,message: s_message, time: s_time, status: s_status});

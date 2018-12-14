@@ -21,7 +21,6 @@ btn_send.addEventListener('click', function(){
       firstname: firstname.value,
       lastname: lastname.value,
       message: message.value,
-      time: Date.now(),
       no: chatlog_no
     });
     s_status = 0;
@@ -48,7 +47,6 @@ $('#msg').bind('input propertychange', function() {
       firstname: firstname.value,
       lastname: lastname.value,
       message: s_msg,
-      time: Date.now(),
       no: s_no
     }, s_status);
     s_status = 1;
@@ -58,7 +56,6 @@ $('#msg').bind('input propertychange', function() {
       firstname: firstname.value,
       lastname: lastname.value,
       message: s_msg,
-      time: Date.now(),
       no: s_no
     }, s_status);
 
