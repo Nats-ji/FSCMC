@@ -173,3 +173,32 @@ $('#msg').each(function () {
   this.style.height = (this.scrollHeight) + 'px';
 });*/
 //--------------------------------------------------------------------
+
+//This is for task image box size controll.
+
+function winSize() {
+  var winWidth = $(window).width();
+  if (winWidth > 1600) {
+    document.getElementById('task-window').style.width = "1100px";
+    document.getElementById('chat-window').style.width = winWidth - 1110 + "px";
+  }
+  else {
+    document.getElementById('task-window').style.width = winWidth * 2 / 3 +"px";
+    document.getElementById('chat-window').style.width = winWidth / 3 - 10 + "px";
+  }
+}
+window.onload = winSize;
+window.onresize = winSize;
+
+//Receive task image
+socket.on('task_image', function(number) {
+  if (number == 1) {
+    document.getElementById('task-img').src='/image/spot-diff-1.png';
+  }
+  else if (number == 2) {
+    document.getElementById('task-img').src='/image/spot-diff-2.png';
+  }
+  else {
+    alert("Something is wrong");
+  }
+});

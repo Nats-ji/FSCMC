@@ -82,6 +82,9 @@ mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
           user1_id = client_status[0][0];
           user2_id = client_status[1][0];
           io.sockets.emit('app_start', 1);
+          //Distribute task image
+          io.to(user1_id).emit('task_image', '1');
+          io.to(user2_id).emit('task_image', '2');
           session_info.count(function (err, count) {
               //Insert session information into MongoDB
               let sessionid = count + 1;
