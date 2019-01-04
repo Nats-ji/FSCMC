@@ -101,7 +101,7 @@ div#input {
 }
 
 div#chatlog {
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
     padding: 5px;
     box-sizing: border-box;
