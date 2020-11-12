@@ -37,7 +37,7 @@ Set-ExecutionPolicy Unrestricted
 ```
 Then type `Y` to comfirm.
 
-You may also want to change the address of the mongodb in `./index.js` at line 19.
+You may also want to change the address of the mongodb in `./index.js` at line 38.
 
 If you are running on localhost, visit `http://127.0.0.1` on your browser to enter the chatroom. Visit `http://127.0.0.1/spec` to enter the spectator view.
 
