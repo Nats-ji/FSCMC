@@ -1,9 +1,8 @@
-# FSCMC: A Fully-synchronous Computer-mediated Communication App
-
+# FSCMC: A Fully-synchronous Computer-mediated Communication App Designed for Conversation Analysis
 FSCMC is a program written with node.js, developed for my master's thesis. The key features of this program are:
 
   - Realtime message transmission (i.e. the interlocutors can read each other's message even when their opponent is still typing)
-  - Support group size greater than two person
+  - Support group size greater than two persons (maybe broken, need to fix how the code interacts with the database)
   - Have a detailed typelog system utilizing mongodb to record the precise time of each keystroke
   - Have a spectator mode for observers to spectate the conversations
   - Designed for conversation analysis
