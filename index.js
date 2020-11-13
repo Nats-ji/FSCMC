@@ -37,7 +37,7 @@ var client_status = [];
 var s_order = 0; //Overall order for typelog;
 var overall_order = 0; //Overall order for chatlog;
 //Connect to mongodb.
-mongo.connect('mongodb://127.0.0.1:27017/SCMC', function(err,client) {
+mongo.connect(mongodburl, function(err,client) {
   if (err) {
     throw err;
   };
