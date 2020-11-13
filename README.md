@@ -39,14 +39,15 @@ Set-ExecutionPolicy Unrestricted
 ```
 Then type `Y` to comfirm.
 
-If you are going to deploy this program, you may also want to
-  - change the address of the mongodb in `./index.js` at line 38;
-  - change the socket url in `./public/chat.js` at line 20;
-  - change the socket url in `./public/spec.js` at line 20.
+Environment variables:
+  Before you start developing, you need to set up a `.env` file to config the environment variables.
+  There is a sample file named `.sample-env` in the root directory. All you have to do is to rename it into `.env` and edit the values.
+```toml
+MONGODB = mongodb://localhost:27017/SCMC # Your mongodb connection string.
+PORT = 80 # Port your app will be running on.
+```
 
-Visit `http://your.domain` to enter the chatroom, and `http://your.domain/spec.html` to enter the spectator view.
-
-If you are running on localhost, visit `http://127.0.0.1` on your browser to enter the chatroom. Visit `http://127.0.0.1/spec.html` to enter the spectator view.
+Visit `http://your.domain:port` to enter the chatroom, and `http://your.domain:port/spec.html` to enter the spectator view.
 
 ### How to transcribe the typelog for Conversation Analysis
 Please refer to the transcription system I specifically designed for this program. This transcription system was adapted from oral Conversation Analysis ([Paul ten Have, p213](https://uk.sagepub.com/en-gb/eur/doing-conversation-analysis/book229124)). Table 1 shows the notations and the descriptions of the notations used.

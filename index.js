@@ -16,15 +16,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 */
-
+require('dotenv').config();
 var express = require('express');
 var socket = require('socket.io');
 var mongo = require('mongodb').MongoClient;
 
+const mongodburl = process.env.MONGODB;
+const port = process.env.PORT;
 
 var app = express();
-var server = app.listen(80,function(){
-  console.log('listening to requests on port 80')
+var server = app.listen(port,function(){
+  console.log('listening to requests on port ' + port)
 });
 
 app.use(express.static('public'));
