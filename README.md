@@ -1,12 +1,14 @@
 # FSCMC: A Fully-synchronous Computer-mediated Communication App
 
-FSCMC is a program written with node.js, developed for my master's thiese. The key features of this program are:
+FSCMC is a program written with node.js, developed for my master's thesis. The key features of this program are:
 
   - Realtime message transmission (i.e. the interlocutors can read each other's message even when their opponent is still typing)
   - Support group size greater than two person
   - Have a detailed typelog system utilizing mongodb to record the precise time of each keystroke
   - Have a spectator mode for observers to spectate the conversations
   - Designed for conversation analysis
+
+You can visit the demo [here](http://demo.fscmc.efl-call.xyz/) ([Spectator View](http://demo.fscmc.efl-call.xyz/spec.html)).
 
 ### Usage
 Install `git`, `node.js`, `mongodb`
@@ -37,9 +39,14 @@ Set-ExecutionPolicy Unrestricted
 ```
 Then type `Y` to comfirm.
 
-You may also want to change the address of the mongodb in `./index.js` at line 38.
+If you are going to deploy this program, you may also want to
+  - change the address of the mongodb in `./index.js` at line 38;
+  - change the socket url in `./public/chat.js` at line 20;
+  - change the socket url in `./public/spec.js` at line 20.
 
-If you are running on localhost, visit `http://127.0.0.1` on your browser to enter the chatroom. Visit `http://127.0.0.1/spec` to enter the spectator view.
+Visit `http://your.domain` to enther the chatroom, and `http://your.domain/spec.html` to enter the spectator view.
+
+If you are running on localhost, visit `http://127.0.0.1` on your browser to enter the chatroom. Visit `http://127.0.0.1/spec.html` to enter the spectator view.
 
 ### How to transcribe the typelog for Conversation Analysis
 Please refer to the transcription system I specifically designed for this program. This transcription system was adapted from oral Conversation Analysis ([Paul ten Have, p213](https://uk.sagepub.com/en-gb/eur/doing-conversation-analysis/book229124)). Table 1 shows the notations and the descriptions of the notations used.
@@ -64,7 +71,7 @@ Table1
  - Add Control Panel
  - Add typelog view page
  - Add config file for easy configuration
- - Add the fuction of loading the tasks from file
+ - Add the function of loading the tasks from file
  - Add the function to create more chatrooms
  - Add the ability to switch between fully-synchronous and quasi-synchronous mode
 
