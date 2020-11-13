@@ -17,8 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-var socket = io.connect("http://localhost");
-//var socket = io.connect("http://178.128.88.108:80"); //For Server
+var socket = io.connect("/");
 
 var message = document.getElementById('msg');
 var firstname = document.getElementById('firstname');
