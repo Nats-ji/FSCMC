@@ -44,7 +44,7 @@ If you are going to deploy this program, you may also want to
   - change the socket url in `./public/chat.js` at line 20;
   - change the socket url in `./public/spec.js` at line 20.
 
-Visit `http://your.domain` to enther the chatroom, and `http://your.domain/spec.html` to enter the spectator view.
+Visit `http://your.domain` to enter the chatroom, and `http://your.domain/spec.html` to enter the spectator view.
 
 If you are running on localhost, visit `http://127.0.0.1` on your browser to enter the chatroom. Visit `http://127.0.0.1/spec.html` to enter the spectator view.
 
