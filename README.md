@@ -42,7 +42,7 @@ Then type `Y` to comfirm.
 Environment variables:
   Before you start developing, you need to set up a `.env` file to config the environment variables.
   There is a sample file named `.sample-env` in the root directory. All you have to do is to rename it into `.env` and edit the values.
-```toml
+```sh
 MONGODB = mongodb://localhost:27017/SCMC # Your mongodb connection string.
 PORT = 80 # Port your app will be running on.
 ```
