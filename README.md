@@ -51,8 +51,8 @@ Visit `http://your.domain:port` to enter the chatroom, and `http://your.domain:p
 ### How to transcribe the typelog for Conversation Analysis
 Please refer to the transcription system I specifically designed for this program. This transcription system was adapted from oral Conversation Analysis ([Paul ten Have, p213](https://uk.sagepub.com/en-gb/eur/doing-conversation-analysis/book229124)). Table 1 shows the notations and the descriptions of the notations used.
 
-Table1
-*Conversation Transcript Notation*
+**Table1**</br>
+***Conversation Transcript Notation***
 | Notation | Description |
 |----------|-------------|
 | < | The action of pressing “Enter” key. |
