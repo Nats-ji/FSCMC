@@ -14,7 +14,7 @@ Install `git`, `node.js`, `mongodb`
 
 Clone this repository using git.
 ```sh
-$ git clone https://github.com/Nats-ji/SCMC.git
+$ git clone https://github.com/Nats-ji/FSCMC.git
 ```
 
 Install the dependencies and start the server.
